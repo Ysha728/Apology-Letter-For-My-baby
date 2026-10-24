@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Little Message for You 💜</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: #49305e;
+      background: linear-gradient(135deg, #e8d8ff, #fff0f8, #dcd2ff);
+      overflow-x: hidden;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -30px;
+      color: #b58ade;
+      opacity: .55;
+      pointer-events: none;
+      animation: float 9s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0) rotate(0); }
+      to { transform: translateY(-115vh) rotate(35deg); }
+    }
+
+    .card {
+      width: 100%;
+      max-width: 470px;
+      padding: 30px 23px;
+      text-align: center;
+      background: rgba(255,255,255,.88);
+      border: 2px solid #d6b9f5;
+      border-radius: 25px;
+      box-shadow: 0 15px 45px #76509b25;
+      position: relative;
+      z-index: 1;
+    }
+
+    .symbol {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .tag {
+      font-family: monospace;
+      color: #9866c3;
+      font-size: 13px;
+    }
+
+    h1 {
+      color: #8552ad;
+      font-size: 27px;
+      line-height: 1.4;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #c6a4e7;
+      border-radius: 12px;
+      font-size: 16px;
+      text-align: center;
+      outline-color: #a16bd0;
+      margin: 12px 0;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 10px;
+      background: #8957b5;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    button:hover { background: #70439a; }
+    button:active { transform: scale(.98); }
+
+    .secondary {
+      background: #f1e4fc;
+      color: #70439a;
+    }
+
+    .hidden { display: none; }
+
+    .letter {
+      text-align: left;
+      padding-top: 10px;
+    }
+
+    .signature {
+      text-align: center;
+      color: #8957b5;
+      font-weight: bold;
+      margin-top: 25px;
+    }
+
+    .error {
+      color: #b04475;
+      font-size: 14px;
+      min-height: 20px;
+    }
+
+    .footer {
+      margin-top: 24px;
+      color: #a07cbb;
+      font: 12px monospace;
+    }
+
+    @media (max-width: 400px) {
+      .card { padding: 24px 17px; }
+      h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="heart" style="left:10%;animation-delay:0s">♡</div>
+  <div class="heart" style="left:80%;animation-delay:3s">♥</div>
+  <div class="heart" style="left:55%;animation-delay:5s">♡</div>
+
+  <main class="card">
+
+    <!-- STEP 1: PASSWORD -->
+    <section id="lock">
+      <div class="symbol">🔐</div>
+      <div class="tag">&lt;access level="my_baby"&gt;</div>
+
+      <h1>A Little Secret For You 💜</h1>
+      <p>
+        Someone has a special message for you...
+        but first, you have to unlock it. 🥺
+      </p>
+
+      <form id="passwordForm">
+        <input
+          id="password"
+          type="password"
+          placeholder="Enter our secret password"
+          autocomplete="off"
+          aria-label="Secret password"
+          required
+        >
+        <button type="submit">Unlock My Message 💌</button>
+      </form>
+
+      <p class="error" id="error" aria-live="polite"></p>
+      <div class="footer">authentication.exe 💗</div>
+    </section>
+
+    <!-- STEP 2: GREETING -->
+    <section id="greeting" class="hidden">
+      <div class="symbol">🥺💗</div>
+      <div class="tag">&lt;hello my_favorite_person&gt;</div>
+
+      <h1>Hi, Baby Ko! 🧸</h1>
+
+      <p>
+        Before anything else...
+      </p>
+
+      <h1>Please forgive me na, baby? 🥺</h1>
+
+      <p>
+        I made this little website just for you.
+        There's something I really want to tell you
+        from the bottom of my heart.
+      </p>
+
+      <p>Will you read my message? 💌</p>
+
+      <button id="openLetter">
+        Click to Open My Heart 💜
+      </button>
+
+      <div class="footer">loading_my_heart... 100%</div>
+    </section>
+
+    <!-- STEP 3: THE APOLOGY -->
+    <section id="apology" class="hidden">
+      <div class="symbol">💌</div>
+      <div class="tag">&lt;message type="from_my_heart"&gt;</div>
+
+      <h1>I'm Sorry, My Love. 💜</h1>
+
+      <div class="letter">
+        <p>Dear Baby,</p>
+
+        <p>
+          I made this little website because there are
+          things I want to tell you, and I want you to
+          know how genuinely sorry I am.
+        </p>
+
+        <p>
+          I'm sorry for the mistake I made and for
+          hurting your feelings. You matter so much
+          to me, and it hurts to know that my actions
+          caused you pain.
+        </p>
+
+        <p>
+          If I could press <b>Ctrl + Z</b> and undo
+          that moment, I would. But I know real life
+          doesn't have an undo button. I can't change
+          what happened, but I can learn from it and
+          take responsibility for my actions.
+        </p>
+
+        <p>
+          I don't want my apology to be just words.
+          I want to show you through my actions that
+          I'm willing to grow, understand you better,
+          and be more careful with your feelings.
+        </p>
+
+        <p>
+          I know I am not perfect, and our relationship
+          won't always run without bugs. But I hope
+          we can work through our problems with honesty,
+          patience, and understanding.
+        </p>
+
+        <p>
+          Baby, I'm not asking you to forget everything
+          instantly or pretend that nothing happened.
+          I just hope you can feel how sincere this
+          apology is. I'll respect your feelings and
+          give you the time you need.
+        </p>
+
+        <p>
+          If love were a programming language,
+          you would be one of my favorite lines of code.
+          And if my heart were a database, the memories
+          we've made would be among its most precious
+          records. 💗
+        </p>
+
+        <p>
+          I'm truly sorry, baby ko. I care about you,
+          and I want to keep learning how to love you
+          in a better way.
+        </p>
+      </div>
+
+      <div class="signature">
+        With all my heart,<br>
+        Your girl, who's still learning and growing. 💗
+      </div>
+
+      <button class="secondary" id="lastMessage">
+        One Last Thing... 💌
+      </button>
+
+      <p id="finalNote" class="hidden">
+        You don't have to give me an answer right away.
+        I just wanted you to know that I mean my apology.
+        Thank you for reading my little website, baby. 🥹💜
+      </p>
+
+      <div class="footer">
+        error_acknowledged();<br>
+        learning_and_growing = true;<br>
+        &lt;/message&gt; ♡
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // CHANGE THIS TO YOUR OWN SECRET PASSWORD
+    const SECRET_PASSWORD = "baby";
+
+    const lock = document.getElementById("lock");
+    const greeting = document.getElementById("greeting");
+    const apology = document.getElementById("apology");
+    const password = document.getElementById("password");
+    const error = document.getElementById("error");
+
+    document.getElementById("passwordForm")
+      .addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        if (
+          password.value.trim().toLowerCase() ===
+          SECRET_PASSWORD.toLowerCase()
+        ) {
+          lock.classList.add("hidden");
+          greeting.classList.remove("hidden");
+          error.textContent = "";
+        } else {
+          error.textContent =
+            "Oops! Wrong password, baby. Try again. 🥺";
+          password.value = "";
+          password.focus();
+        }
+      });
+
+    document.getElementById("openLetter")
+      .addEventListener("click", function() {
+        greeting.classList.add("hidden");
+        apology.classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+    document.getElementById("lastMessage")
+      .addEventListener("click", function() {
+        document.getElementById("finalNote")
+          .classList.remove("hidden");
+
+        this.classList.add("hidden");
+      });
+  </script>
+
+</body>
+  </html>
+  
